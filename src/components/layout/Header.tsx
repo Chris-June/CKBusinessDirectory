@@ -15,7 +15,7 @@ export default function Header() {
           <div className="flex">
             <Link to="/" className="flex-shrink-0 flex items-center">
               <span className="text-xl font-bold text-gray-900">
-                Business Directory
+                Chatham Kent Chamber Of Commerce
               </span>
             </Link>
           </div>
