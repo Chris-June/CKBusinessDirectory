@@ -93,7 +93,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl font-bold text-white mb-4">
-              Why Choose Chatham-Kent Business Directory?
+              Why Choose Chatham-Kent Chamber of Commerce?
             </h2>
             <p className="text-gray-400">
               Empowering local businesses and consumers with modern tools and
@@ -139,7 +139,7 @@ export default function Home() {
                   Ready to Grow Your Business?
                 </h2>
                 <p className="text-lg text-blue-100 mb-8">
-                  Join Chatham-Kent's premier business directory and connect with
+                  Join Chatham-Kent's Chamber of Commerce business directory and connect with
                   thousands of potential customers.
                 </p>
                 <Link
