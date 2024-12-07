@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import { mockBusinesses } from './mockData';
 
-export default function BusinessDetail() {
+export default function BusinessDetails() {
   const { id } = useParams();
   const business = mockBusinesses.find((b) => b.id === id);
 
@@ -50,16 +50,23 @@ export default function BusinessDetail() {
                 className="w-24 h-24 rounded-full border-4 border-white"
               />
               <div>
-                <h1 className="text-4xl font-bold text-white mb-2">
-                  {business.name}
-                </h1>
+                <h1 className="text-4xl font-bold text-white mb-2">{business.name}</h1>
+
+                {/* Verified Badge */}
+                {business.isVerified && (
+                  <span className="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-md mb-2">
+                    Verified
+                  </span>
+                )}
+
+                {/* Ratings */}
                 <div className="flex items-center space-x-2">
-                  <div className="flex items-center">
-                    <Star className="w-5 h-5 text-yellow-400 fill-current" />
-                    <span className="ml-1 text-white">4.8</span>
-                  </div>
+                  <Star className="w-5 h-5 text-yellow-400 fill-current" />
+                  <span className="ml-1 text-white">
+                    {business.ratings?.average.toFixed(1) || 'N/A'}
+                  </span>
                   <span className="text-white">•</span>
-                  <span className="text-white">150 Reviews</span>
+                  <span className="text-white">{business.ratings?.count || 0} Reviews</span>
                 </div>
               </div>
             </div>
@@ -77,34 +84,72 @@ export default function BusinessDetail() {
               <p className="text-gray-600">{business.description}</p>
             </section>
 
+            {/* Promotion */}
+            {business.promotion && (
+              <section className="mb-12">
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">Current Promotion</h2>
+                <div className="p-4 bg-yellow-100 text-yellow-800 rounded-md">
+                  {business.promotion}
+                </div>
+              </section>
+            )}
+
+            {/* Features */}
             <section className="mb-12">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Features</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {business.features.map((feature) => (
-                  <div
-                    key={feature.id}
-                    className="bg-gray-50 p-6 rounded-lg"
-                  >
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                      {feature.title}
-                    </h3>
+                  <div key={feature.id} className="bg-gray-50 p-6 rounded-lg">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
                     <p className="text-gray-600">{feature.description}</p>
                   </div>
                 ))}
               </div>
             </section>
 
+            {/* Categories */}
+            {business.categories && business.categories.length > 0 && (
+              <section className="mb-12">
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">Categories</h2>
+                <div className="flex flex-wrap gap-2">
+                  {business.categories.map((category) => (
+                    <span
+                      key={category}
+                      className="text-xs bg-gray-200 text-gray-800 px-2 py-1 rounded-md"
+                    >
+                      {category}
+                    </span>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Reviews */}
+            {business.reviews && business.reviews.length > 0 && (
+              <section className="mb-12">
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">Reviews</h2>
+                <ul className="space-y-4">
+                  {business.reviews.map((review, index) => (
+                    <li key={index} className="bg-gray-100 p-4 rounded-md">
+                      <p className="text-sm text-gray-800 font-semibold">{review.reviewer}</p>
+                      <p className="text-gray-600">{review.comment}</p>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
+            {/* Location */}
             <section>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Location</h2>
               <div className="bg-gray-100 h-64 rounded-lg mb-4">
-                {/* Map placeholder */}
                 <div className="w-full h-full flex items-center justify-center text-gray-500">
                   Map integration coming soon
                 </div>
               </div>
               <p className="text-gray-600">
-                {business.location.address}, {business.location.city},{' '}
-                {business.location.state} {business.location.zipCode}
+                {business.location.address}, {business.location.city}, {business.location.province}{' '}
+                {business.location.postalCode}
               </p>
             </section>
           </div>
@@ -112,9 +157,7 @@ export default function BusinessDetail() {
           {/* Sidebar */}
           <div className="lg:col-span-1">
             <div className="bg-gray-50 p-6 rounded-lg sticky top-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                Business Information
-              </h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Business Information</h3>
               <div className="space-y-4">
                 <div className="flex items-center text-gray-600">
                   <Clock className="w-5 h-5 mr-3" />
@@ -128,10 +171,7 @@ export default function BusinessDetail() {
                   <Phone className="w-5 h-5 mr-3" />
                   <div>
                     <p className="font-medium">Phone</p>
-                    <a
-                      href={`tel:${business.contact.phone}`}
-                      className="text-blue-600 hover:text-blue-800"
-                    >
+                    <a href={`tel:${business.contact.phone}`} className="text-blue-600 hover:text-blue-800">
                       {business.contact.phone}
                     </a>
                   </div>
