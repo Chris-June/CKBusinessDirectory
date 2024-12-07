@@ -35,6 +35,7 @@ export interface SocialMedia {
   twitter?: string;
   instagram?: string;
   linkedin?: string;
+  discord?: string;
 }
 
 export interface Location {

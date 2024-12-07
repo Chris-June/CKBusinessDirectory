@@ -2,63 +2,81 @@ import type { Business } from '../../types/business';
 
 export const mockBusinesses: Business[] = [
   {
-    id: '1',
-    name: 'The Yellow Bean Café',
-    description: 'A cozy café offering locally roasted coffee, fresh pastries, and light meals.',
-    isVerified: true,
-    logo: 'https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=400&h=400&fit=crop',
-    coverImage: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1200&h=400&fit=crop',
-    features: [
+    "id": "1",
+    "name": "Intellisync Solutions",
+    "description": "Welcome to Intellisync Solutions – where your vision meets the limitless potential of AI! We are your trusted partner in crafting dynamic, intelligent web applications that revolutionize how businesses operate. If you can dream it, we can build it – smarter, faster, and more intuitive than ever before!",
+    "isVerified": true,
+    "logo": "https://via.placeholder.com/400x400.png?text=Intellisync+Logo",
+    "coverImage": "https://via.placeholder.com/1200x400.png?text=Empowering+Businesses+With+AI",
+    "features": [
       {
-        id: 'f1',
-        title: 'Local Coffee',
-        description: 'Freshly roasted beans from Ontario',
-        icon: 'coffee',
+        "id": "intellisync-f1",
+        "title": "Revolutionary AI Features",
+        "description": "From predictive analytics to process automation, our AI-powered apps transform the way you work.",
+        "icon": "rocket"
       },
+      {
+        "id": "intellisync-f2",
+        "title": "Tailored for You",
+        "description": "Every app we build is uniquely designed to solve YOUR challenges and achieve YOUR goals.",
+        "icon": "handshake"
+      },
+      {
+        "id": "intellisync-f3",
+        "title": "Effortless Integration",
+        "description": "We seamlessly blend AI into your workflow so you can focus on what matters most – growth.",
+        "icon": "cogs"
+      }
     ],
-    contact: {
-      email: 'info@yellowbean.com',
-      phone: '+1 (519) 555-1234',
-      address: '12 King St W',
+    "contact": {
+      "email": "chris.june@intellisync.ca",
+      "phone": "+1 (519) 358-9712",
+      "address": "Chatham-Kent, Ontario"
     },
-    socialMedia: {
-      facebook: 'https://facebook.com/yellowbean',
-      instagram: 'https://instagram.com/yellowbean',
+    "socialMedia": {
+      "linkedin": "https://www.linkedin.com/company/intellisync-solutions",
+      "twitter": "https://x.com/Intelli_Sync",
+      "discord": "https://discord.gg/CrGqs9cxnM"
     },
-    location: {
-      latitude: 42.4056,
-      longitude: -82.1910,
-      address: '12 King St W',
-      city: 'Chatham',
-      province: 'ON',
-      country: 'Canada',
-      postalCode: 'N7M 1C6',
+    "location": {
+      "latitude": 42.4048,
+      "longitude": -82.191,
+      "address": "Chatham-Kent",
+      "city": "Chatham",
+      "province": "ON",
+      "country": "Canada",
+      "postalCode": "N7M 1C6"
     },
-    promotion: 'Free coffee with any breakfast order until 11 AM!',
-    categories: ['Café', 'Bakery'],
-    ratings: {
-      average: 4.5,
-      count: 123,
+    "promotion": "🚀 NEW CLIENTS: Claim your free consultation and let's explore how AI can elevate your business today! Learn more here: [Promotions](https://intellisync-promotions.netlify.app/)",
+    "categories": ["AI Web Apps", "Business Solutions"],
+    "ratings": {
+      "average": 5.0,
+      "count": 55
     },
-    reviews: [
+
+    "reviews": [
       {
-        reviewer: 'John Doe',
-        comment: 'Great coffee and friendly service!',
-        rating: 5,
-        date: '2023-12-01',
+        "reviewer": "Jessica Martinez",
+        "comment": "Intellisync didn’t just build us a web app – they built us a game-changer! Our workflows are on fire 🔥 and our customers love the new experience!",
+        "rating": 5,
+        "date": "2024-11-20"
       },
       {
-        reviewer: 'Jane Smith',
-        comment: 'Cozy atmosphere but a bit pricey.',
-        rating: 4,
-        date: '2023-11-25',
-      },
+        "reviewer": "Michael Stevens",
+        "comment": "The team at Intellisync is brilliant, passionate, and incredibly easy to work with. If you’re not working with them, you’re missing out!",
+        "rating": 5,
+        "date": "2024-10-28"
+      }
     ],
-    hours: {
-      open: '07:00',
-      close: '18:00',
-    },
+    "hours": {
+      "open": "09:00",
+      "close": "17:00"
+    }
   },
+
+
+
+
   {
     id: '2',
     name: 'Retro Suites Hotel',

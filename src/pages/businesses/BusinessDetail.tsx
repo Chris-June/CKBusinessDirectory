@@ -20,10 +20,10 @@ export default function BusinessDetails() {
 
   if (!business) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-900">Business not found</h2>
-          <p className="mt-2 text-gray-600">
+          <h2 className="text-2xl font-bold text-gray-200">Business Not Found</h2>
+          <p className="mt-2 text-gray-400">
             The business you're looking for doesn't exist or has been removed.
           </p>
         </div>
@@ -32,7 +32,7 @@ export default function BusinessDetails() {
   }
 
   return (
-    <div className="bg-white">
+    <div className="bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-gray-200">
       {/* Hero Section */}
       <div className="relative h-96">
         <img
@@ -40,33 +40,31 @@ export default function BusinessDetails() {
           alt={business.name}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black bg-opacity-50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/50 to-gray-900/80" />
         <div className="absolute inset-0 flex items-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div className="flex items-center space-x-6">
               <img
                 src={business.logo}
                 alt={`${business.name} logo`}
-                className="w-24 h-24 rounded-full border-4 border-white"
+                className="w-24 h-24 rounded-full border-4 border-white shadow-lg"
               />
               <div>
-                <h1 className="text-4xl font-bold text-white mb-2">{business.name}</h1>
-
+                <h1 className="text-4xl font-bold text-blue-400 mb-2">{business.name}</h1>
                 {/* Verified Badge */}
                 {business.isVerified && (
-                  <span className="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-md mb-2">
+                  <span className="inline-block bg-gradient-to-r from-blue-500 to-blue-700 text-white text-xs px-2 py-1 rounded-md shadow-sm">
                     Verified
                   </span>
                 )}
-
                 {/* Ratings */}
                 <div className="flex items-center space-x-2">
-                  <Star className="w-5 h-5 text-yellow-400 fill-current" />
-                  <span className="ml-1 text-white">
+                  <Star className="w-5 h-5 text-yellow-400" />
+                  <span className="text-blue-200 font-medium">
                     {business.ratings?.average.toFixed(1) || 'N/A'}
                   </span>
-                  <span className="text-white">•</span>
-                  <span className="text-white">{business.ratings?.count || 0} Reviews</span>
+                  <span className="text-blue-200">•</span>
+                  <span className="text-blue-200">{business.ratings?.count || 0} Reviews</span>
                 </div>
               </div>
             </div>
@@ -80,15 +78,15 @@ export default function BusinessDetails() {
           {/* Main Content */}
           <div className="lg:col-span-2">
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">About</h2>
-              <p className="text-gray-600">{business.description}</p>
+              <h2 className="text-2xl font-bold text-gray-100 mb-4">About</h2>
+              <p className="text-gray-400">{business.description}</p>
             </section>
 
             {/* Promotion */}
             {business.promotion && (
               <section className="mb-12">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Current Promotion</h2>
-                <div className="p-4 bg-yellow-100 text-yellow-800 rounded-md">
+                <h2 className="text-2xl font-bold text-gray-100 mb-4">Current Promotion</h2>
+                <div className="p-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 rounded-lg shadow">
                   {business.promotion}
                 </div>
               </section>
@@ -96,12 +94,15 @@ export default function BusinessDetails() {
 
             {/* Features */}
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Features</h2>
+              <h2 className="text-2xl font-bold text-gray-100 mb-4">Features</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {business.features.map((feature) => (
-                  <div key={feature.id} className="bg-gray-50 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
-                    <p className="text-gray-600">{feature.description}</p>
+                  <div
+                    key={feature.id}
+                    className="bg-gray-800 p-6 rounded-lg shadow hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-700 transition-all"
+                  >
+                    <h3 className="text-lg font-semibold text-blue-300 mb-2">{feature.title}</h3>
+                    <p className="text-gray-400">{feature.description}</p>
                   </div>
                 ))}
               </div>
@@ -110,12 +111,12 @@ export default function BusinessDetails() {
             {/* Categories */}
             {business.categories && business.categories.length > 0 && (
               <section className="mb-12">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Categories</h2>
+                <h2 className="text-2xl font-bold text-gray-100 mb-4">Categories</h2>
                 <div className="flex flex-wrap gap-2">
                   {business.categories.map((category) => (
                     <span
                       key={category}
-                      className="text-xs bg-gray-200 text-gray-800 px-2 py-1 rounded-md"
+                      className="text-xs bg-blue-500/20 text-blue-200 px-3 py-1 rounded-full hover:bg-blue-500 hover:text-white transition-all"
                     >
                       {category}
                     </span>
@@ -127,12 +128,12 @@ export default function BusinessDetails() {
             {/* Reviews */}
             {business.reviews && business.reviews.length > 0 && (
               <section className="mb-12">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Reviews</h2>
+                <h2 className="text-2xl font-bold text-gray-100 mb-4">Reviews</h2>
                 <ul className="space-y-4">
                   {business.reviews.map((review, index) => (
-                    <li key={index} className="bg-gray-100 p-4 rounded-md">
-                      <p className="text-sm text-gray-800 font-semibold">{review.reviewer}</p>
-                      <p className="text-gray-600">{review.comment}</p>
+                    <li key={index} className="bg-gray-800 p-4 rounded-lg shadow">
+                      <p className="text-sm text-blue-200 font-bold">{review.reviewer}</p>
+                      <p className="text-gray-400">{review.comment}</p>
                     </li>
                   ))}
                 </ul>
@@ -141,13 +142,11 @@ export default function BusinessDetails() {
 
             {/* Location */}
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Location</h2>
-              <div className="bg-gray-100 h-64 rounded-lg mb-4">
-                <div className="w-full h-full flex items-center justify-center text-gray-500">
-                  Map integration coming soon
-                </div>
+              <h2 className="text-2xl font-bold text-gray-100 mb-4">Location</h2>
+              <div className="bg-gradient-to-r from-gray-800 to-gray-700 h-64 rounded-lg mb-4 flex items-center justify-center text-gray-400">
+                Map integration coming soon
               </div>
-              <p className="text-gray-600">
+              <p className="text-gray-400">
                 {business.location.address}, {business.location.city}, {business.location.province}{' '}
                 {business.location.postalCode}
               </p>
@@ -156,10 +155,10 @@ export default function BusinessDetails() {
 
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-gray-50 p-6 rounded-lg sticky top-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Business Information</h3>
+            <div className="bg-gray-800 p-6 rounded-lg sticky top-6 shadow-lg">
+              <h3 className="text-lg font-semibold text-gray-100 mb-4">Business Information</h3>
               <div className="space-y-4">
-                <div className="flex items-center text-gray-600">
+                <div className="flex items-center text-gray-400">
                   <Clock className="w-5 h-5 mr-3" />
                   <div>
                     <p className="font-medium">Hours</p>
@@ -167,28 +166,25 @@ export default function BusinessDetails() {
                     <p className="text-sm">Sat-Sun: 10AM-4PM</p>
                   </div>
                 </div>
-                <div className="flex items-center text-gray-600">
+                <div className="flex items-center text-gray-400">
                   <Phone className="w-5 h-5 mr-3" />
                   <div>
                     <p className="font-medium">Phone</p>
-                    <a href={`tel:${business.contact.phone}`} className="text-blue-600 hover:text-blue-800">
+                    <a href={`tel:${business.contact.phone}`} className="text-blue-400 hover:text-blue-600">
                       {business.contact.phone}
                     </a>
                   </div>
                 </div>
-                <div className="flex items-center text-gray-600">
+                <div className="flex items-center text-gray-400">
                   <Mail className="w-5 h-5 mr-3" />
                   <div>
                     <p className="font-medium">Email</p>
-                    <a
-                      href={`mailto:${business.contact.email}`}
-                      className="text-blue-600 hover:text-blue-800"
-                    >
+                    <a href={`mailto:${business.contact.email}`} className="text-blue-400 hover:text-blue-600">
                       {business.contact.email}
                     </a>
                   </div>
                 </div>
-                <div className="flex items-center text-gray-600">
+                <div className="flex items-center text-gray-400">
                   <Globe className="w-5 h-5 mr-3" />
                   <div>
                     <p className="font-medium">Social Media</p>
@@ -198,7 +194,7 @@ export default function BusinessDetails() {
                           href={business.socialMedia.facebook}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-gray-400 hover:text-gray-600"
+                          className="text-blue-400 hover:text-blue-600"
                         >
                           <Facebook className="w-5 h-5" />
                         </a>
@@ -208,7 +204,7 @@ export default function BusinessDetails() {
                           href={business.socialMedia.twitter}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-gray-400 hover:text-gray-600"
+                          className="text-blue-400 hover:text-blue-600"
                         >
                           <Twitter className="w-5 h-5" />
                         </a>
@@ -218,7 +214,7 @@ export default function BusinessDetails() {
                           href={business.socialMedia.instagram}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-gray-400 hover:text-gray-600"
+                          className="text-blue-400 hover:text-blue-600"
                         >
                           <Instagram className="w-5 h-5" />
                         </a>
@@ -228,7 +224,7 @@ export default function BusinessDetails() {
                           href={business.socialMedia.linkedin}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-gray-400 hover:text-gray-600"
+                          className="text-blue-400 hover:text-blue-600"
                         >
                           <Linkedin className="w-5 h-5" />
                         </a>
@@ -237,7 +233,7 @@ export default function BusinessDetails() {
                   </div>
                 </div>
               </div>
-              <button className="mt-6 w-full bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 transition-colors">
+              <button className="mt-6 w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white py-3 px-4 rounded-lg hover:from-blue-500 hover:to-blue-700 transition-all">
                 Contact Business
               </button>
             </div>
